@@ -236,6 +236,19 @@ async function inertChild(runner, source, args = [], limits = FIXTURE_LIMITS) {
   });
 }
 
+// A killed orphan is reparented to PID 1. Container inits that never reap
+// (Docker without --init, sandbox supervisors) leave it as a zombie, which
+// still answers signal 0 but is no longer running.
+function isZombie(pid) {
+  if (process.platform !== 'linux') return false;
+  try {
+    const stat = fs.readFileSync(`/proc/${pid}/stat`, 'utf8');
+    return /^[ZX]$/.test(stat.slice(stat.lastIndexOf(')') + 2, stat.lastIndexOf(')') + 3));
+  } catch {
+    return false;
+  }
+}
+
 async function assertGone(pid) {
   assert.ok(Number.isInteger(pid) && pid > 0, 'fixture must identify its owned process');
   for (let attempt = 0; attempt < 25; attempt++) {
@@ -243,6 +256,7 @@ async function assertGone(pid) {
       if (error.code === 'ESRCH') return;
       throw error;
     }
+    if (isZombie(pid)) return;
     await new Promise(resolve => setTimeout(resolve, 20));
   }
   assert.fail(`owned fixture process ${pid} survived cleanup`);
