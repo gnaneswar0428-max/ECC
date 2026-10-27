@@ -115,8 +115,9 @@ function createModularInstallRoot(options = {}) {
   )
   fs.writeFileSync(path.join(root, "scripts", "package.json"), JSON.stringify({ type: "commonjs" }))
 
-  // The plugin's tools import @opencode-ai/plugin, which resolves through
-  // node_modules — a real installation has it, an isolated temp dir would not.
+  // The plugin's tools import runtime dependencies (zod), which resolve through
+  // node_modules — a real installation has them, an isolated temp dir would not.
+  // tests/opencode-runtime-deps.test.js checks those imports stay in "dependencies".
   fs.symlinkSync(path.join(repoRoot, "node_modules"), path.join(root, "node_modules"), "junction")
 
   if (options.withSkills) {
