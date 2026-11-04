@@ -1,0 +1,149 @@
+{
+ "note": "TRANSCRIBED (not byte-verbatim) from Tracxn MCP search_ipo_events response; INR crore converted from INR values returned. Financials as on 31-Mar-2026. EPS as returned (units unverified).",
+ "query": {
+  "filter": {
+   "stockExchangeCountry": [
+    "India"
+   ],
+   "ipoDate": {
+    "min": "01/01/2018",
+    "max": "04/11/2026"
+   }
+  },
+  "sort": "ipoDate DESC",
+  "size": 10
+ },
+ "total_count": 2191,
+ "credits_after": 704,
+ "records": [
+  {
+   "company": "Ajwa Projects",
+   "ipo_date": "2026-11-04",
+   "exchanges": "BSE",
+   "market_cap_cr": 112.12,
+   "issue_price_inr": 203.85,
+   "revenue_closest_to_ipo_cr": 48.56,
+   "eps_as_returned": 1059.18,
+   "fin_as_on": "2026-03-31",
+   "board": "UNVERIFIED"
+  },
+  {
+   "company": "MK Jewels",
+   "ipo_date": "2026-11-04",
+   "exchanges": "BSE; NSE",
+   "market_cap_cr": 912.67,
+   "issue_price_inr": 162.14,
+   "revenue_closest_to_ipo_cr": 538.86,
+   "eps_as_returned": 940.45,
+   "fin_as_on": "2026-03-31",
+   "board": "UNVERIFIED"
+  },
+  {
+   "company": "Carverroboweld",
+   "ipo_date": "2026-11-04",
+   "exchanges": "BSE",
+   "market_cap_cr": 105.6,
+   "issue_price_inr": 80.59,
+   "revenue_closest_to_ipo_cr": 27.12,
+   "eps_as_returned": 426.29,
+   "fin_as_on": "2026-03-31",
+   "board": "UNVERIFIED"
+  },
+  {
+   "company": "SFC",
+   "ipo_date": "2026-11-03",
+   "exchanges": "BSE; NSE",
+   "market_cap_cr": 3228.95,
+   "issue_price_inr": 329.63,
+   "revenue_closest_to_ipo_cr": 821.27,
+   "eps_as_returned": 57.03,
+   "fin_as_on": "2026-03-31",
+   "board": "UNVERIFIED"
+  },
+  {
+   "company": "BLS Polymers",
+   "ipo_date": "2026-11-03",
+   "exchanges": "BSE; NSE",
+   "market_cap_cr": 928.37,
+   "issue_price_inr": 149.66,
+   "revenue_closest_to_ipo_cr": 354.41,
+   "eps_as_returned": 617.0,
+   "fin_as_on": "2026-03-31",
+   "board": "UNVERIFIED"
+  },
+  {
+   "company": "Wiscon Industries",
+   "ipo_date": "2026-11-03",
+   "exchanges": "BSE",
+   "market_cap_cr": 407.05,
+   "issue_price_inr": 203.65,
+   "revenue_closest_to_ipo_cr": 197.13,
+   "eps_as_returned": 1475.19,
+   "fin_as_on": "2026-03-31",
+   "board": "UNVERIFIED"
+  },
+  {
+   "company": "EAAA India Alternatives",
+   "ipo_date": "2026-11-02",
+   "exchanges": "BSE; NSE",
+   "market_cap_cr": 10798.2,
+   "issue_price_inr": 1670.12,
+   "revenue_closest_to_ipo_cr": 963.76,
+   "eps_as_returned": 4667.68,
+   "fin_as_on": "2026-03-31",
+   "board": "UNVERIFIED"
+  },
+  {
+   "company": "Core4 Engineers",
+   "ipo_date": "2026-10-30",
+   "exchanges": "BSE",
+   "market_cap_cr": 192.82,
+   "issue_price_inr": 93.22,
+   "revenue_closest_to_ipo_cr": 91.79,
+   "eps_as_returned": 1115.27,
+   "fin_as_on": "2026-03-31",
+   "board": "UNVERIFIED"
+  },
+  {
+   "company": "Jio",
+   "ipo_date": "2026-10-28",
+   "exchanges": "BSE; NSE",
+   "market_cap_cr": 1032548.15,
+   "issue_price_inr": 1121.23,
+   "revenue_closest_to_ipo_cr": 148397.52,
+   "eps_as_returned": 3152.3,
+   "fin_as_on": "2026-03-31",
+   "board": "UNVERIFIED"
+  },
+  {
+   "company": "Paras Hospitals",
+   "ipo_date": "2026-10-28",
+   "exchanges": "BSE; NSE",
+   "market_cap_cr": 7514.14,
+   "issue_price_inr": 694.46,
+   "revenue_closest_to_ipo_cr": 1613.97,
+   "eps_as_returned": 1717.31,
+   "fin_as_on": "2026-03-31",
+   "board": "UNVERIFIED"
+  }
+ ],
+ "followup_counts": {
+  "ipos_raise_le_250cr_by_year": {
+   "2018": 169,
+   "2019": 125,
+   "2020": 122,
+   "2021": 189,
+   "2022": 213,
+   "2023": 294,
+   "2024": 378,
+   "2025": 396,
+   "2026": 304
+  },
+  "credits_after": 703,
+  "legal_entities_screen_count": {
+   "filter": "registrar compliant, inc<=31/12/2022, latestEBITDA INR 1-500 cr, revenue CAGR3y>=15%",
+   "count": 54902,
+   "credits_after": 702
+  }
+ }
+}
