@@ -1,0 +1,2 @@
+{"query":{"tool":"search_ipo_events","apiType":"aggregation","filter":{"stockExchangeCountry":["India"],"ipoDate":{"min":"01/01/2018","max":"04/11/2026"}},"aggregation":{"groupBy":[{"field":"exchangeSymbol","size":50}],"metric":{"operation":"count","field":"ipos"}}},"retrieved":"2026-11-04","credits_remaining_after":726,
+"response":{"result":[{"term":"NSE","value":1505},{"term":"BSE","value":1223},{"term":"BOM","value":7},{"term":"CSE","value":1},{"term":"CSE or CoSE","value":1},{"term":"LSE","value":1}]}}

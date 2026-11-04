@@ -1,0 +1,170 @@
+[
+ {
+  "year": 2018,
+  "exchange": "BOM",
+  "listing_events": 4,
+  "source_id": "S13",
+  "raw_file": "2026-11-04_q02_ipo_events_by_year_exchange.json"
+ },
+ {
+  "year": 2018,
+  "exchange": "BSE",
+  "listing_events": 124,
+  "source_id": "S13",
+  "raw_file": "2026-11-04_q02_ipo_events_by_year_exchange.json"
+ },
+ {
+  "year": 2018,
+  "exchange": "CSE or CoSE",
+  "listing_events": 1,
+  "source_id": "S13",
+  "raw_file": "2026-11-04_q02_ipo_events_by_year_exchange.json"
+ },
+ {
+  "year": 2018,
+  "exchange": "NSE",
+  "listing_events": 74,
+  "source_id": "S13",
+  "raw_file": "2026-11-04_q02_ipo_events_by_year_exchange.json"
+ },
+ {
+  "year": 2019,
+  "exchange": "BSE",
+  "listing_events": 86,
+  "source_id": "S13",
+  "raw_file": "2026-11-04_q02_ipo_events_by_year_exchange.json"
+ },
+ {
+  "year": 2019,
+  "exchange": "NSE",
+  "listing_events": 63,
+  "source_id": "S13",
+  "raw_file": "2026-11-04_q02_ipo_events_by_year_exchange.json"
+ },
+ {
+  "year": 2020,
+  "exchange": "BOM",
+  "listing_events": 2,
+  "source_id": "S13",
+  "raw_file": "2026-11-04_q02_ipo_events_by_year_exchange.json"
+ },
+ {
+  "year": 2020,
+  "exchange": "BSE",
+  "listing_events": 64,
+  "source_id": "S13",
+  "raw_file": "2026-11-04_q02_ipo_events_by_year_exchange.json"
+ },
+ {
+  "year": 2020,
+  "exchange": "CSE",
+  "listing_events": 1,
+  "source_id": "S13",
+  "raw_file": "2026-11-04_q02_ipo_events_by_year_exchange.json"
+ },
+ {
+  "year": 2020,
+  "exchange": "LSE",
+  "listing_events": 1,
+  "source_id": "S13",
+  "raw_file": "2026-11-04_q02_ipo_events_by_year_exchange.json"
+ },
+ {
+  "year": 2020,
+  "exchange": "NSE",
+  "listing_events": 77,
+  "source_id": "S13",
+  "raw_file": "2026-11-04_q02_ipo_events_by_year_exchange.json"
+ },
+ {
+  "year": 2021,
+  "exchange": "BOM",
+  "listing_events": 1,
+  "source_id": "S13",
+  "raw_file": "2026-11-04_q02_ipo_events_by_year_exchange.json"
+ },
+ {
+  "year": 2021,
+  "exchange": "BSE",
+  "listing_events": 89,
+  "source_id": "S13",
+  "raw_file": "2026-11-04_q02_ipo_events_by_year_exchange.json"
+ },
+ {
+  "year": 2021,
+  "exchange": "NSE",
+  "listing_events": 163,
+  "source_id": "S13",
+  "raw_file": "2026-11-04_q02_ipo_events_by_year_exchange.json"
+ },
+ {
+  "year": 2022,
+  "exchange": "BSE",
+  "listing_events": 92,
+  "source_id": "S13",
+  "raw_file": "2026-11-04_q02_ipo_events_by_year_exchange.json"
+ },
+ {
+  "year": 2022,
+  "exchange": "NSE",
+  "listing_events": 161,
+  "source_id": "S13",
+  "raw_file": "2026-11-04_q02_ipo_events_by_year_exchange.json"
+ },
+ {
+  "year": 2023,
+  "exchange": "BSE",
+  "listing_events": 121,
+  "source_id": "S13",
+  "raw_file": "2026-11-04_q02_ipo_events_by_year_exchange.json"
+ },
+ {
+  "year": 2023,
+  "exchange": "NSE",
+  "listing_events": 232,
+  "source_id": "S13",
+  "raw_file": "2026-11-04_q02_ipo_events_by_year_exchange.json"
+ },
+ {
+  "year": 2024,
+  "exchange": "BSE",
+  "listing_events": 155,
+  "source_id": "S13",
+  "raw_file": "2026-11-04_q02_ipo_events_by_year_exchange.json"
+ },
+ {
+  "year": 2024,
+  "exchange": "NSE",
+  "listing_events": 313,
+  "source_id": "S13",
+  "raw_file": "2026-11-04_q02_ipo_events_by_year_exchange.json"
+ },
+ {
+  "year": 2025,
+  "exchange": "BSE",
+  "listing_events": 259,
+  "source_id": "S13",
+  "raw_file": "2026-11-04_q02_ipo_events_by_year_exchange.json"
+ },
+ {
+  "year": 2025,
+  "exchange": "NSE",
+  "listing_events": 243,
+  "source_id": "S13",
+  "raw_file": "2026-11-04_q02_ipo_events_by_year_exchange.json"
+ },
+ {
+  "year": 2026,
+  "exchange": "BSE",
+  "listing_events": 233,
+  "source_id": "S13",
+  "raw_file": "2026-11-04_q02_ipo_events_by_year_exchange.json"
+ },
+ {
+  "year": 2026,
+  "exchange": "NSE",
+  "listing_events": 179,
+  "source_id": "S13",
+  "raw_file": "2026-11-04_q02_ipo_events_by_year_exchange.json"
+ }
+]

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SME IPO Readiness</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#16202b;--muted:#5b6876;--line:#dfe4ea;--navy:#1f3a5f;--amber:#c9821d;--warn:#fff4ce;--warn-ink:#6b4e00;--ok:#1d7a4f;--bad:#b23b3b}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#11161c;--card:#18202a;--ink:#e6ebf0;--muted:#9aa7b4;--line:#2a3542;--navy:#7fa7d9;--amber:#e8a33d;--warn:#3a3016;--warn-ink:#f1d48a}}
+:root[data-theme="dark"]{--bg:#11161c;--card:#18202a;--ink:#e6ebf0;--muted:#9aa7b4;--line:#2a3542;--navy:#7fa7d9;--amber:#e8a33d;--warn:#3a3016;--warn-ink:#f1d48a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+header{padding:20px 16px 0;max-width:1180px;margin:auto}h1{font-size:20px;margin:0 0 4px}.sub{color:var(--muted);font-size:13px}
+nav{display:flex;gap:4px;flex-wrap:wrap;max-width:1180px;margin:14px auto 0;padding:0 16px;border-bottom:1px solid var(--line)}
+nav button{background:none;border:0;padding:9px 12px;color:var(--muted);font:inherit;cursor:pointer;border-bottom:2px solid transparent}
+nav button[aria-selected=true]{color:var(--ink);border-color:var(--navy);font-weight:600}
+main{max-width:1180px;margin:auto;padding:16px}section{display:none}section.on{display:block}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px;margin-bottom:12px}
+.k{font-size:26px;font-weight:650;font-variant-numeric:tabular-nums}.kl{color:var(--muted);font-size:12px}
+.warn{background:var(--warn);color:var(--warn-ink);border-radius:8px;padding:10px 12px;margin-bottom:12px;font-size:13px}
+h2{font-size:15px;margin:0 0 10px}table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--muted);font-weight:600}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}.scroll{overflow-x:auto}
+.pill{display:inline-block;padding:1px 7px;border-radius:10px;font-size:11px;border:1px solid var(--line)}
+.filters{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.filters label{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:3px}
+input,select{font:inherit;padding:5px 7px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink)}
+.empty{color:var(--muted);padding:18px;text-align:center;border:1px dashed var(--line);border-radius:8px}
+svg text{fill:var(--muted);font-size:11px}.legend{display:flex;gap:14px;font-size:12px;color:var(--muted);margin-bottom:6px}
+.sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+</style>
+</head>
+<body>
+<header><h1>India SME IPO Readiness Research</h1>
+<div class="sub" id="sub"></div></header>
+<nav role="tablist" id="tabs"></nav>
+<main>
+<section id="p1"></section><section id="p2"></section><section id="p3"></section><section id="p4"></section>
+<section id="p5"></section><section id="p6"></section><section id="p7"></section>
+</main>
+<script src="data.js"></script>
+<script>
+const D = window.DATA, $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const PAGES = ['Executive Overview','Historical IPOs','Company Screener','Company Deep Dive','Watchlist','India Map','Methodology & Data Quality'];
+$('#sub').textContent = `Built ${D.built} · rules as of ${D.rules_as_of} · scores are screening indices, not probabilities`;
+const tabs = $('#tabs');
+PAGES.forEach((p,i)=>{const b=document.createElement('button');b.textContent=p;b.setAttribute('role','tab');b.onclick=()=>show(i);tabs.appendChild(b)});
+function show(i){document.querySelectorAll('section').forEach((s,j)=>s.classList.toggle('on',i===j));
+  tabs.querySelectorAll('button').forEach((b,j)=>b.setAttribute('aria-selected',i===j));try{localStorage.setItem('tab',i)}catch(e){}}
+const pending = `<div class="warn"><b>Company-level data not loaded.</b> Tracxn record pulls (stages 2–4) are awaiting approval because the connector consumes credits (${D.kpis.tracxn_credits_left} / 10,000 left). Nothing here is estimated or invented.</div>`;
+const tbl = (cols, rows, num=[]) => `<div class="scroll"><table><thead><tr>${cols.map(c=>`<th class="${num.includes(c)?'n':''}">${esc(c)}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map((v,j)=>`<td class="${num.includes(cols[j])?'n':''}">${esc(v)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+
+function bars(series, labels, colors, h=200){
+  const w=Math.max(360,labels.length*70), pad=34, max=Math.max(1,...series.flat().filter(v=>v!=null));
+  const gw=(w-pad)/labels.length, bw=Math.min(22,(gw-10)/series.length);
+  let s=`<svg viewBox="0 0 ${w} ${h+24}" width="100%" role="img">`;
+  [0,.5,1].forEach(t=>{const y=h-t*(h-10);s+=`<line x1="${pad}" x2="${w}" y1="${y}" y2="${y}" stroke="var(--line)"/><text x="${pad-4}" y="${y+4}" text-anchor="end">${Math.round(t*max)}</text>`});
+  labels.forEach((l,i)=>{series.forEach((ser,k)=>{const v=ser[i];if(v==null)return;const bh=v/max*(h-10);
+    const x=pad+i*gw+(gw-bw*series.length)/2+k*bw;s+=`<rect x="${x}" y="${h-bh}" width="${bw-2}" height="${bh}" rx="2" fill="${colors[k]}"><title>${l}: ${v}</title></rect>`});
+    s+=`<text x="${pad+i*gw+gw/2}" y="${h+16}" text-anchor="middle">${esc(l)}</text>`});
+  return s+'</svg>';
+}
+const K = D.kpis;
+// Page 1
+$('#p1').innerHTML = pending + `<div class="grid">${[
+ ['Companies identified',K.companies_identified],['With verified financials',K.companies_verified_financials],
+ ['Companies screened',K.companies_screened],['Potential IPO candidates',K.potential_candidates],
+ ['Confirmed IPO preparation',K.confirmed_prep],['Historical IPO records (company-level)',K.historical_ipo_records],
+ ['Tracxn IPO listing events, India 2018–2026',K.tracxn_listing_events.toLocaleString('en-IN')],['Tracxn credits left',K.tracxn_credits_left]
+].map(([l,v])=>`<div class="card"><div class="k">${v}</div><div class="kl">${l}</div></div>`).join('')}</div>
+<div class="card"><h2>Status of each workstream</h2>${tbl(['Stage','Status'],Object.entries(D.pending).map(([k,v])=>[k.replace('_',' '),v]))}</div>`;
+// Page 2
+const R = D.reconciliation;
+$('#p2').innerHTML = `<div class="warn">Tracxn's exchange field does not separate SME from mainboard, and a dual-listed IPO counts once per exchange. Navy bars are <b>all-board listing events</b>, not SME IPOs. Amber is the external SME-only count (secondary source; blank where not retrieved).</div>
+<div class="card"><h2>IPO listing events by year</h2><div class="legend"><span><i class="sw" style="background:var(--navy)"></i>Tracxn NSE + BSE (all boards)</span><span><i class="sw" style="background:var(--amber)"></i>External SME-only count</span></div>
+${bars([R.map(r=>r.tracxn_nse_plus_bse),R.map(r=>r.external_sme_ipo_count)],R.map(r=>r.year+(r.year==2026?'*':'')),['var(--navy)','var(--amber)'])}
+<div class="kl">* 2026 is year-to-date to 4 Nov. External 2024 figure is marked partial by its source.</div></div>
+<div class="card"><h2>Reconciliation table</h2>${tbl(['Year','Tracxn NSE','Tracxn BSE','NSE+BSE','Ext. SME IPOs','Ext. SME ₹ cr','Note'],
+ R.map(r=>[r.year,r.tracxn_nse_events,r.tracxn_bse_events,r.tracxn_nse_plus_bse,r.external_sme_ipo_count??'–',r.external_sme_amount_cr??'–',r.note.replace(/^; /,'')]),['Tracxn NSE','Tracxn BSE','NSE+BSE','Ext. SME IPOs','Ext. SME ₹ cr'])}</div>
+<div class="card"><h2>Pre-IPO financial benchmarks, industry, state, age at IPO</h2><div class="empty">Requires company-level IPO records and pre-IPO financials (Tracxn stages 2–3).</div></div>`;
+// Page 3
+const F=[['State','select'],['City','select'],['Industry','select'],['Revenue ≥ ₹ cr','number'],['Revenue CAGR ≥ %','number'],['EBITDA margin ≥ %','number'],['Net worth ≥ ₹ cr','number'],['Debt/Equity ≤','number'],['Age ≥ years','number'],['Readiness ≥','number'],['Intent ≥','number'],['Confidence ≥','number']];
+$('#p3').innerHTML = pending + `<div class="card"><h2>Filters</h2><div class="filters">${F.map(([l,t])=>`<label>${l}${t=='select'?'<select disabled><option>All</option></select>':'<input type="number" disabled>'}</label>`).join('')}</div></div>
+<div class="card"><h2>Results</h2>${D.companies.length?'':'<div class="empty">0 companies loaded. The screener activates automatically when the build includes stage-4 data.</div>'}</div>`;
+// Page 4
+$('#p4').innerHTML = pending + `<div class="card"><h2>Company deep dive</h2><div class="empty">Select a company in the screener once data is loaded. Each profile will show: business profile, 3–5 FY financials, NSE Emerge and BSE SME rule-by-rule checks, readiness / intent / confidence scores, comparable historical IPOs, sources, risks and limitations.</div></div>`;
+// Page 5
+$('#p5').innerHTML = pending + `<div class="card"><h2>List A: confirmed IPO preparation</h2><div class="kl">Any direct disclosure: DRHP filed, exchange in-principle approval, board approval, merchant banker appointed, official announcement.</div><div class="empty">0 companies</div></div>
+<div class="card"><h2>List B: financially strong, no announced IPO plan</h2><div class="kl">Financial readiness only. These companies are not described as planning an IPO.</div><div class="empty">0 companies</div></div>`;
+// Page 6
+$('#p6').innerHTML = `<div class="card"><h2>Share of Udyam MSME registrations, FY24 (top 3 states)</h2>
+${bars([D.state_share.map(s=>s.share_pct)],D.state_share.map(s=>s.state),['var(--navy)'],160)}
+<div class="kl">Percent of national registrations. Secondary source (IBEF); official state counts were not reachable from the research container.</div></div>
+<div class="card"><h2>Candidate and IPO clusters by state and city</h2><div class="empty">Requires company-level data (stages 2–4).</div></div>`;
+// Page 7
+const rules = Object.entries(D.rules).flatMap(([p,rs])=>rs.map(r=>[p,r.id,r.text,r.verification]));
+$('#p7').innerHTML = `<div class="card"><h2>Readiness score (A), 100 points</h2>${tbl(['Component','Weight'],Object.entries(D.weights).map(([k,v])=>[k.replace(/_/g,' '),v]),['Weight'])}
+<p class="kl">Readiness is withheld when components with data cover less than 70% of the weight. Weights are initial hypotheses until the backtest runs.</p></div>
+<div class="card"><h2>Intent score (B), signal points</h2>${tbl(['Signal','Points'],Object.entries(D.intent_weights).map(([k,v])=>[k.replace(/_/g,' '),v]),['Points'])}</div>
+<div class="card"><h2>Eligibility rules (secondary sources, pending primary verification)</h2>${tbl(['Platform','ID','Rule','Verification'],rules)}</div>
+<div class="card"><h2>MSME classification</h2>${tbl(['Regime','Category','Investment max ₹ cr','Turnover max ₹ cr'],D.msme.map(m=>[m.regime,m.category,m.investment_max_cr,m.turnover_max_cr]),['Investment max ₹ cr','Turnover max ₹ cr'])}</div>
+<div class="card"><h2>Tracxn credit log</h2>${tbl(['#','Tool','Purpose','Credits after','Cost'],D.credit_log.map(c=>[c.call,c.tool,c.purpose,c.credits_after,c.cost]))}</div>
+<div class="card"><h2>Source register</h2>${tbl(['ID','Title','Publisher','Status'],D.sources.map(s=>[s.id,s.title,s.publisher,s.status]))}</div>`;
+let start=0;try{start=+localStorage.getItem('tab')||0}catch(e){}show(start);
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+[
+ {
+  "exchange": "NSE",
+  "listing_events": 1505,
+  "source_id": "S13",
+  "raw_file": "2026-11-04_q01_ipo_events_by_exchange.json"
+ },
+ {
+  "exchange": "BSE",
+  "listing_events": 1223,
+  "source_id": "S13",
+  "raw_file": "2026-11-04_q01_ipo_events_by_exchange.json"
+ },
+ {
+  "exchange": "BOM",
+  "listing_events": 7,
+  "source_id": "S13",
+  "raw_file": "2026-11-04_q01_ipo_events_by_exchange.json"
+ },
+ {
+  "exchange": "CSE",
+  "listing_events": 1,
+  "source_id": "S13",
+  "raw_file": "2026-11-04_q01_ipo_events_by_exchange.json"
+ },
+ {
+  "exchange": "CSE or CoSE",
+  "listing_events": 1,
+  "source_id": "S13",
+  "raw_file": "2026-11-04_q01_ipo_events_by_exchange.json"
+ },
+ {
+  "exchange": "LSE",
+  "listing_events": 1,
+  "source_id": "S13",
+  "raw_file": "2026-11-04_q01_ipo_events_by_exchange.json"
+ }
+]

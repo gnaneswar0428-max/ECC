@@ -1,0 +1,83 @@
+[
+ {
+  "year": 2018,
+  "tracxn_nse_events": 74,
+  "tracxn_bse_events": 128,
+  "tracxn_nse_plus_bse": 202,
+  "external_sme_ipo_count": null,
+  "external_sme_amount_cr": null,
+  "note": "no external SME count retrieved"
+ },
+ {
+  "year": 2019,
+  "tracxn_nse_events": 63,
+  "tracxn_bse_events": 86,
+  "tracxn_nse_plus_bse": 149,
+  "external_sme_ipo_count": null,
+  "external_sme_amount_cr": null,
+  "note": "no external SME count retrieved"
+ },
+ {
+  "year": 2020,
+  "tracxn_nse_events": 77,
+  "tracxn_bse_events": 66,
+  "tracxn_nse_plus_bse": 143,
+  "external_sme_ipo_count": 27,
+  "external_sme_amount_cr": 168,
+  "note": ""
+ },
+ {
+  "year": 2021,
+  "tracxn_nse_events": 163,
+  "tracxn_bse_events": 90,
+  "tracxn_nse_plus_bse": 253,
+  "external_sme_ipo_count": 59,
+  "external_sme_amount_cr": 787,
+  "note": ""
+ },
+ {
+  "year": 2022,
+  "tracxn_nse_events": 161,
+  "tracxn_bse_events": 92,
+  "tracxn_nse_plus_bse": 253,
+  "external_sme_ipo_count": 109,
+  "external_sme_amount_cr": 1980,
+  "note": ""
+ },
+ {
+  "year": 2023,
+  "tracxn_nse_events": 232,
+  "tracxn_bse_events": 121,
+  "tracxn_nse_plus_bse": 353,
+  "external_sme_ipo_count": 182,
+  "external_sme_amount_cr": 4967,
+  "note": ""
+ },
+ {
+  "year": 2024,
+  "tracxn_nse_events": 313,
+  "tracxn_bse_events": 155,
+  "tracxn_nse_plus_bse": 468,
+  "external_sme_ipo_count": 117,
+  "external_sme_amount_cr": 3864,
+  "note": "external: Source marks year as partial"
+ },
+ {
+  "year": 2025,
+  "tracxn_nse_events": 243,
+  "tracxn_bse_events": 259,
+  "tracxn_nse_plus_bse": 502,
+  "external_sme_ipo_count": null,
+  "external_sme_amount_cr": null,
+  "note": "no external SME count retrieved"
+ },
+ {
+  "year": 2026,
+  "tracxn_nse_events": 179,
+  "tracxn_bse_events": 233,
+  "tracxn_nse_plus_bse": 412,
+  "external_sme_ipo_count": null,
+  "external_sme_amount_cr": null,
+  "note": "YTD to 04-Nov-2026; no external SME count retrieved"
+ }
+]
